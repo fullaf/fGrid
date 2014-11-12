@@ -1,0 +1,131 @@
+.grid-wrap
+  margin: 0 auto
+  overflow: auto
+  position: relative // Allows relative-abs positioned elements
+
+  // Make changes to the padding animate
+  @include ftransition(padding)
+
+  @include respond-up(mob-port)
+    padding-left: $mob-port-pad
+    padding-right: $mob-port-pad
+  @include respond-up(mob-land)
+    padding-left: $mob-land-pad
+    padding-right: $mob-land-pad
+  @include respond-up(tab-port)
+    padding-left: $tab-port-pad
+    padding-right: $tab-port-pad
+  @include respond-up(tab-land)
+    padding-left: $tab-land-pad
+    padding-right: $tab-land-pad
+  @include respond-up(med-desk)
+    padding-left: $med-desk-pad
+    padding-right: $med-desk-pad
+  @include respond-up(widescreen)
+    padding-left: $widescreen-pad
+    padding-right: $widescreen-pad
+    max-width: $grid-max-width
+
+.grid-row
+  width: 100%
+  padding-bottom: $row-padding
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+$grid-divisor: 100% / $column-count
+
+@mixin grid-x-pre
+  @include respond-up(mob-port)
+    // No grid to pad
+    padding-right: 0px
+    width: 100%
+
+    // Adds spacing between items
+    padding-bottom: $row-padding
+    &:last-child
+      // Prevents double padding at row
+      @if ($row-collapsed-doublepad==false)
+        padding-bottom: 0px
+
+@mixin grid-x-post
+  @include respond-up(tab-port)
+    padding-right: 8px
+    float: left
+  @include respond-up(tab-land)
+    padding-right: 10px
+    float: left
+  @include respond-up(med-desk)
+    padding-right: 16px
+    float: left
+  @include respond-up(widescreen)
+    padding-right: 18px
+    float: left
+  .grid &:last-of-type
+    padding-right: 0
+
+.grid-1
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 1
+.grid-2
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 2
+.grid-3
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 3
+.grid-4
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 4
+.grid-5
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 5
+.grid-6
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 6
+.grid-7
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 7
+.grid-8
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 8
+.grid-9
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 9
+.grid-10
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 10
+.grid-11
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 11
+.grid-12
+  @include grid-x-pre
+  @include grid-x-post
+  @include respond-up(tab-port)
+    width: $grid-divisor * 12
+
+.grid-inner
+  width: 100%
+  padding-right: 0px

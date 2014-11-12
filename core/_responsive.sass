@@ -1,0 +1,74 @@
+$break-mob-port: 320px
+$break-mob-land: 480px
+$break-tab-port: 768px
+$break-tab-land: 1024px
+$break-med-desk: 1200px
+$break-widescreen: 1400px
+
+@mixin respond-up($media)
+  @if $media == mob-port
+    // Should this always apply? I say yes 02/11/14 WJDP
+    // @media only screen and (min-width: $break-mob-port)
+    @content
+  @else if $media == mob-land
+    @media only screen and (min-width: $break-mob-land)
+      @content
+  @else if $media == tab-port
+    @media only screen and (min-width: $break-tab-port)
+      @content
+  @else if $media == tab-land
+    @media only screen and (min-width: $break-tab-land)
+      @content
+  @else if $media == med-desk
+    @media only screen and (min-width: $break-med-desk)
+      @content
+  @else if $media == widescreen
+    @media only screen and (min-width: $break-widescreen)
+      @content
+
+
+// Then do @include respond-to(phone-land) { width:100%; }
+
+@mixin respond-down($media)
+  @if $media == mob-port
+    @media only screen and (max-width: $break-mob-land - 1)
+      @content
+  @else if $media == mob-land
+    @media only screen and (max-width: $break-tab-port - 1)
+      @content
+  @else if $media == tab-port
+    @media only screen and (max-width: $break-tab-land - 1)
+      @content
+  @else if $media == tab-land
+    @media only screen and (max-width: $break-med-desk - 1)
+      @content
+  @else if $media == med-desk
+    @media only screen and (max-width: $break-widescreen - 1)
+      @content
+  @else if $media == widescreen
+    // Widescreen is the largest, so will always apply
+    // @media only screen and (max-width: $break-widescreen)
+    @content
+
+@mixin respond-to($media)
+  @if $media == mob-port
+    @media only screen and (max-width: $break-mob-land - 1)
+      @content
+  @else if $media == mob-land
+    @media only screen and (max-width: $break-tab-port - 1) and (min-width: $break-mob-land)
+      @content
+  @else if $media == tab-port
+    @media only screen and (max-width: $break-tab-land - 1) and (min-width: $break-tab-port)
+      @content
+  @else if $media == tab-land
+    @media only screen and (max-width: $break-med-desk - 1) and (min-width: $break-tab-land)
+      @content
+  @else if $media == med-desk
+    @media only screen and (max-width: $break-widescreen - 1) and (min-width: $break-med-desk)
+      @content
+  @else if $media == widescreen
+    @media only screen and (min-width: $break-widescreen)
+      @content
+  @else if $media == retina
+    @media only screen and (-webkit-min-device-pixel-ratio: 2)
+      @content
