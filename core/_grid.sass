@@ -1,4 +1,4 @@
-.grid-wrap
+@mixin grid-wrap
   margin: 0 auto
   overflow: auto
   position: relative // Allows relative-abs positioned elements
@@ -26,17 +26,18 @@
     padding-right: $widescreen-pad
     max-width: $grid-max-width
 
-.grid-row
+.grid-wrap
+  @include grid-wrap
+
+@mixin grid-row
   width: 100%
   padding-bottom: $row-padding
-  &:after
-    content: ""
-    display: table
-    clear: both
+  @include grid-clear
 
-$grid-divisor: 100% / $column-count
+.grid-row
+  @include grid-row
 
-@mixin grid-x-pre
+@mixin grid-x-percent($percent)
   // No grid to pad
   padding-right: 0px
   width: 100%
@@ -52,8 +53,9 @@ $grid-divisor: 100% / $column-count
     // Remove spacing as causes double spacing when layout is applied
     padding-bottom: 0
 
+  @include respond-up(tab-port)
+    width: $percent
 
-@mixin grid-x-post
   // Gutters
   @include respond-up(tab-port)
     padding-right: $tab-port-gutter
@@ -71,67 +73,36 @@ $grid-divisor: 100% / $column-count
     // No gutter for last item
     padding-right: 0
 
-.grid-1
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 1
-.grid-2
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 2
-.grid-3
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 3
-.grid-4
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 4
-.grid-5
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 5
-.grid-6
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 6
-.grid-7
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 7
-.grid-8
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 8
-.grid-9
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 9
-.grid-10
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 10
-.grid-11
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 11
-.grid-12
-  @include grid-x-pre
-  @include grid-x-post
-  @include respond-up(tab-port)
-    width: $grid-divisor * 12
+@mixin grid-x-col($col)
+  $grid-divisor: 100% / $column-count
+  @include grid-x-percent($grid-divisor * $col)
 
+.grid-1
+  @include grid-x-col(1)
+.grid-2
+  @include grid-x-col(2)
+.grid-3
+  @include grid-x-col(3)
+.grid-4
+  @include grid-x-col(4)
+.grid-5
+  @include grid-x-col(5)
+.grid-6
+  @include grid-x-col(6)
+.grid-7
+  @include grid-x-col(7)
+.grid-8
+  @include grid-x-col(8)
+.grid-9
+  @include grid-x-col(9)
+.grid-10
+  @include grid-x-col(10)
+.grid-11
+  @include grid-x-col(11)
+.grid-12
+  @include grid-x-col(12)
+
+// Needed?
 .grid-inner
   width: 100%
   padding-right: 0px
