@@ -50,19 +50,21 @@ $grid-divisor: 100% / $column-count
         padding-bottom: 0px
 
 @mixin grid-x-post
+  // Gutters
   @include respond-up(tab-port)
-    padding-right: 8px
+    padding-right: $tab-port-gutter
     float: left
   @include respond-up(tab-land)
-    padding-right: 10px
+    padding-right: $tab-land-gutter
     float: left
   @include respond-up(med-desk)
-    padding-right: 16px
+    padding-right: $med-desk-gutter
     float: left
   @include respond-up(widescreen)
-    padding-right: 18px
+    padding-right: $widescreen-gutter
     float: left
   .grid &:last-of-type
+    // No gutter for last item
     padding-right: 0
 
 .grid-1

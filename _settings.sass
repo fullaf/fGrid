@@ -1,3 +1,11 @@
+// Breakpoint definitions
+$break-mob-port: 320px
+$break-mob-land: 480px
+$break-tab-port: 768px
+$break-tab-land: 1024px
+$break-med-desk: 1200px
+$break-widescreen: 1490px
+
 // The following control the padding applied in the six width steps
 $mob-port-pad: 8px
 $mob-land-pad: 8px
@@ -6,9 +14,15 @@ $tab-land-pad: 4%
 $med-desk-pad: 8%
 $widescreen-pad: 16%
 
+// Gutter sizing
+// No gutter for mobiles
+$tab-port-gutter: 8px
+$tab-land-gutter: 10px
+$med-desk-gutter: 16px
+$widescreen-gutter: 18px
+
 // $grid-max-width, the widest .grid-wrap can possibly be
 $grid-max-width: 2000px
-
 
 // $row-padding applies to bottom of rows and grid items when collapsed
 $row-padding: 17px
@@ -22,5 +36,6 @@ $row-collapsed-doublepad: false
 // 12 is not supported, you could add more .grid-x classes for this to work.
 $column-count: 12
 
+// Fancy transitions, requires Bourbon
 $transition-enable: true
 $transition-options: 0.2s ease-out
