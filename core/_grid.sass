@@ -37,17 +37,21 @@
 $grid-divisor: 100% / $column-count
 
 @mixin grid-x-pre
-  @include respond-up(mob-port)
-    // No grid to pad
-    padding-right: 0px
-    width: 100%
+  // No grid to pad
+  padding-right: 0px
+  width: 100%
 
-    // Adds spacing between items
-    padding-bottom: $row-padding
-    &:last-child
-      // Prevents double padding at row
-      @if ($row-collapsed-doublepad==false)
-        padding-bottom: 0px
+  // Adds spacing between items
+  padding-bottom: $row-padding
+  &:last-child
+    // Prevents double padding at row
+    @if ($row-collapsed-doublepad==false)
+      padding-bottom: 0px
+
+  @include respond-up(tab-port)
+    // Remove spacing as causes double spacing when layout is applied
+    padding-bottom: 0
+
 
 @mixin grid-x-post
   // Gutters
