@@ -1,0 +1,22 @@
+{
+  "name": "fGrid",
+  "version": "master",
+  "homepage": "http://fgrid.fullaf.com",
+  "authors": [
+    "Will Pimblett <will@fullaf.com>"
+  ],
+  "description": "Sass responsive grid system, and mixins!",
+  "main": "fgrid.sass",
+  "keywords": [
+    "Sass",
+    "YAGF"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
