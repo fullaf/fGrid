@@ -4,4 +4,5 @@ script:
 language: sass
 before_install:
  - gem install sass
+ - npm install -g bower
  - bower install bourbon
