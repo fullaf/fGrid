@@ -20,7 +20,7 @@ Importing Bourbon is up to you. If you've installed fGrid using Bower putting th
 
 So now your main Sass file looks like:
 
-```
+```sass
 @import "bower_components/bourbon/dist/bourbon"
 @import "bower_components/fgrid/fgrid"
 
@@ -31,6 +31,32 @@ So now your main Sass file looks like:
 
 fGrid testing comprises installing dependencies and compiling the project to ensure building is successful. We use Travis for this.
 
+## Default Behaviour
+
+The left and right padding of an fGrid page and the grid gutter sizes is specified as a setting for each breakpoint. See (_settings.sass)[_settings.sass].
+
+### Border-Box
+
+We use the border-box box model when we build sites, so fGrid has this set on all elements (See `core/_border_box.sass`).
+
+The border-box model (see [this CSS Tricks article](http://css-tricks.com/box-sizing/)) changes the default behaviour of padding applied to elements.
+
+In a nutshell in the default **context-box** model the rendered width of an element is the sum of the defined width, the width of the elements padding and the width of the elements borders. This applies in the same way to the height. This means if you want to increase the padding on an element you have to recalculate the padding and borders.
+
+If this sounds silly, lets propose the **border-box** model. The defined width will be the rendered width. Padding and borders will compress the content inside this defined width.
+
+Consider the following:
+
+```sass
+width: 200px
+border: 1px solid
+padding: 20px
+```
+
+With the context-box model the width of an element with the above styles will have a rendered width of `200 + 1*2 + 20*2 = 242px`. With border-box the width will be **200px**, the padding and border will happen inside this width. Much better!
+
+**border-box** is [universally supported](http://caniuse.com/#search=border-box) on modern browsers.
+
 ## Documentation
 
 Examples given will be in SASS, SCSS may be useful to add later. Converting to SCSS essentially means adding curly braces to selectors and semicolons at the end of lines.
@@ -39,7 +65,60 @@ Examples given will be in SASS, SCSS may be useful to add later. Converting to S
 
 The two main components of fGrid are the grid system and the responsive mixins. Bits we find useful when building fGrid powered sites are likely to be included as well.
 
-fGrid can be customised by editing the _settings.sass file
+fGrid can be customised by editing the (_settings.sass)[_settings.sass] file.
+
+### Basics of the grid system
+
+By default fGrid implements a 12 column grid system. You can use the class `grid-n` where n is the number of columns. Each row is cleared and given padding by using `grid-row`, finally the grid system is sized on the page by being inside `grid-wrap`.
+
+#### Example
+
+```html
+<div class="grid-wrap">
+  <div class="grid-row demo-grid">
+    <div class="grid-3">
+      <div class="demo-inner">
+        .grid-3
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="demo-inner">
+        .grid-3
+      </div>
+    </div>
+    <div class="grid-6">
+      <div class="demo-inner">
+        .grid-6
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Grid Mixins
+
+While using the built-in classes will work, it's not semantic as it dirties your code with meaningless classes. Instead it is recommended to use the grid mixins.
+
+```sass
+header, div.wrapper, footer
+    @include grid-wrap
+
+div.row
+    @include grid-row
+
+article
+    # Emulate .grid-8
+    @include grid-x-col(8)
+
+aside
+    # Emulate .grid-4
+    @include grid-x-col(4)
+
+div.weird-grid
+    # We also can do a grid element using an arbritary percentage
+    @include grid-x-percent(43.7%)
+
+```
 
 ### Responsive Mixins
 
@@ -65,8 +144,7 @@ If you are following a mobile first methodology you'll probably only want to use
 #### Example
 The following will give a multi-line nav on mobile and single-line on tab-port and above. When mob-land only we increase the font-size.
 
-**SASS**
-```
+```sass
 header
     li
         font-size: 16px
@@ -76,3 +154,17 @@ header
             display: inline-block
 ```
 
+### Retina Detection
+
+Devices that have a minimum pixel ratio of 2, i.e. mobile high res retina screens can be selected with `@include respond-to(retina)`. This selector only works with respond-to and not -up and -down.
+
+#### Example
+The following element is given a 500px wide background, when on a retina device a 1000px background is given and scaled to half size to give a high-res background.
+
+```sass
+element
+    background: url('500px-wide.png')
+    @include respond-to(retina)
+      background: url('1000px-wide.png')
+      background-size: 500px auto
+```
