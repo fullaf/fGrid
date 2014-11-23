@@ -1,0 +1,7 @@
+script:
+ - "tests.rb"
+
+language: sass
+before_install:
+ - gem install sass
+ - bower install bourbon
