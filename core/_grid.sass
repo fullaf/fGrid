@@ -7,23 +7,23 @@
   @include ftransition(padding)
 
   @include respond-up(mob-port)
-    padding-left: $mob-port-pad
-    padding-right: $mob-port-pad
+    padding-left: $grid-mob-port-pad
+    padding-right: $grid-mob-port-pad
   @include respond-up(mob-land)
-    padding-left: $mob-land-pad
-    padding-right: $mob-land-pad
+    padding-left: $grid-mob-land-pad
+    padding-right: $grid-mob-land-pad
   @include respond-up(tab-port)
-    padding-left: $tab-port-pad
-    padding-right: $tab-port-pad
+    padding-left: $grid-tab-port-pad
+    padding-right: $grid-tab-port-pad
   @include respond-up(tab-land)
-    padding-left: $tab-land-pad
-    padding-right: $tab-land-pad
+    padding-left: $grid-tab-land-pad
+    padding-right: $grid-tab-land-pad
   @include respond-up(med-desk)
-    padding-left: $med-desk-pad
-    padding-right: $med-desk-pad
+    padding-left: $grid-med-desk-pad
+    padding-right: $grid-med-desk-pad
   @include respond-up(widescreen)
-    padding-left: $widescreen-pad
-    padding-right: $widescreen-pad
+    padding-left: $grid-widescreen-pad
+    padding-right: $grid-widescreen-pad
     max-width: $grid-max-width
 
 .grid-wrap
@@ -31,7 +31,7 @@
 
 @mixin grid-row
   width: 100%
-  padding-bottom: $row-padding
+  padding-bottom: $grid-row-padding
   @include grid-clear
 
 .grid-row
@@ -43,10 +43,10 @@
   width: 100%
 
   // Adds spacing between items
-  padding-bottom: $row-padding
+  padding-bottom: $grid-row-padding
   &:last-child
     // Prevents double padding at row
-    @if ($row-collapsed-doublepad==false)
+    @if ($grid-row-collapsed-doublepad==false)
       padding-bottom: 0px
 
   @include respond-up(tab-port)
@@ -58,23 +58,23 @@
 
   // Gutters
   @include respond-up(tab-port)
-    padding-right: $tab-port-gutter
+    padding-right: $grid-tab-port-gutter
     float: left
   @include respond-up(tab-land)
-    padding-right: $tab-land-gutter
+    padding-right: $grid-tab-land-gutter
     float: left
   @include respond-up(med-desk)
-    padding-right: $med-desk-gutter
+    padding-right: $grid-med-desk-gutter
     float: left
   @include respond-up(widescreen)
-    padding-right: $widescreen-gutter
+    padding-right: $grid-widescreen-gutter
     float: left
   .grid &:last-of-type
     // No gutter for last item
     padding-right: 0
 
 @mixin grid-x-col($col)
-  $grid-divisor: 100% / $column-count
+  $grid-divisor: 100% / $grid-column-count
   @include grid-x-percent($grid-divisor * $col)
 
 .grid-1
