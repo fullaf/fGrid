@@ -33,7 +33,7 @@ fGrid testing comprises installing dependencies and compiling the project to ens
 
 ## Default Behaviour
 
-The left and right padding of an fGrid page and the grid gutter sizes is specified as a setting for each breakpoint. See (_settings.sass)[_settings.sass].
+The left and right padding of an fGrid page and the grid gutter sizes is specified as a setting for each breakpoint. See `_settings.sass`.
 
 ### Border-Box
 
@@ -57,6 +57,10 @@ With the context-box model the width of an element with the above styles will ha
 
 **border-box** is [universally supported](http://caniuse.com/#search=border-box) on modern browsers.
 
+### Breakpoint Transitions
+
+When a fGrid webpage is resized and a breakpoint is reached the changes will transist. Settings `$transition-enable` and `$transition-option` allow turning off this behaviour or modification of the transition.
+
 ## Documentation
 
 Examples given will be in SASS, SCSS may be useful to add later. Converting to SCSS essentially means adding curly braces to selectors and semicolons at the end of lines.
@@ -65,7 +69,7 @@ Examples given will be in SASS, SCSS may be useful to add later. Converting to S
 
 The two main components of fGrid are the grid system and the responsive mixins. Bits we find useful when building fGrid powered sites are likely to be included as well.
 
-fGrid can be customised by editing the (_settings.sass)[_settings.sass] file.
+fGrid can be customised by editing the `_settings.sass` file.
 
 ### Basics of the grid system
 
