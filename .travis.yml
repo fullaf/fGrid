@@ -1,12 +1,12 @@
 script:
- - "ruby tests.rb"
-
+- ruby tests.rb
 language: sass
 before_install:
- - gem install sass
- - npm install -g bower
- - bower install bourbon
-
+- gem install sass
+- npm install -g bower
+- bower install bourbon
 notifications:
   email:
-    - will+fgrid@fullaf.com
+  - will+fgrid@fullaf.com
+  slack:
+    secure: kH4WwoVdDMG2443SS9X8LJ6k8t4AQZCjeLfQPvWRk4rrpVpafi5a14NhtNboTZW3zK9M8qb/tw1giY/cDTcLTTiHN7UIvsqpYo3gd3gmK1FV+tNA75tpwsE0X0PeAui+0CEgK13oymruTQcJldyETIOlkGMbZwaCHebXLOFmc08=
