@@ -1,7 +1,6 @@
 @mixin respond-up($media)
   @if $media == mob-port
-    // Should this always apply? I say yes 02/11/14 WJDP
-    // @media only screen and (min-width: $grid-break-mob-port)
+    // mob-port is smallest, so will always apply.
     @content
   @else if $media == mob-land
     @media only screen and (min-width: $grid-break-mob-land)

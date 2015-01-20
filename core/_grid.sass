@@ -54,6 +54,7 @@
     padding-bottom: 0
 
   @include respond-up(tab-port)
+    // Main, sets width of column
     width: $percent
 
   // Gutters
@@ -101,8 +102,3 @@
   @include grid-x-col(11)
 .grid-12
   @include grid-x-col(12)
-
-// Needed?
-.grid-inner
-  width: 100%
-  padding-right: 0px
