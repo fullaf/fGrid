@@ -74,9 +74,23 @@
     // No gutter for last item
     padding-right: 0
 
+@function grid-column-percent($col)
+  // Returns the percentage equivalent of a column number
+  $grid-divisor: 100% / $grid-column-count
+  @return $grid-divisor * $col
+
 @mixin grid-x-col($col)
   $grid-divisor: 100% / $grid-column-count
-  @include grid-x-percent($grid-divisor * $col)
+  @include grid-x-percent(grid-column-percent($col))
+
+@mixin grid-pad-percent($direction, $percent)
+  @if $direction==left
+    margin-left: $percent
+  @if $direction==right
+    margin-right: $percent
+
+@mixin grid-pad-col($direction, $col)
+  @include grid-pad-percent($direction, grid-column-percent($col))
 
 .grid-1
   @include grid-x-col(1)
