@@ -1,10 +1,14 @@
+sudo: false
+
+install:
+- bundle install
+- npm install -g bower
+- bower install
 script:
 - ruby tests.rb
+
 language: sass
-before_install:
-- gem install sass
-- npm install -g bower
-- bower install bourbon#4.2.2
+
 notifications:
   email:
   - will+fgrid@fullaf.com
