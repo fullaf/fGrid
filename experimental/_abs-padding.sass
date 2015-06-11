@@ -6,8 +6,6 @@
 // knowledge of the screen width.
 
 @mixin abs-left-wrap-pad($left)
-  // Make changes to the position animate
-  @include ftransition(left)
   @include respond-up(mob-land)
     left: calc(#{$grid-mob-port-pad} + #{$left})
   @include respond-up(mob-port)
@@ -21,8 +19,6 @@
   @include respond-up(widescreen)
     left: calc(#{$grid-widescreen-pad} + #{$left})
 @mixin abs-right-wrap-pad($right)
-  // Make changes to the position animate
-  @include ftransition(right)
   @include respond-up(mob-land)
     right: calc(#{$grid-mob-port-pad} + #{$right})
   @include respond-up(mob-port)

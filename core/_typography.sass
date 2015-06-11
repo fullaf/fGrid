@@ -1,0 +1,77 @@
+@mixin block($multiple: 1)
+  margin-bottom: $grid-baseline * $multiple
+
+@mixin baseline($multiple: 1)
+  // Set line-height as a multiple of $grid-baseline
+  line-height: $grid-baseline * $multiple
+
+@mixin font-size($multiple)
+  font-size: $grid-base-font-size * $multiple
+
+@function headings-selector($high, $low)
+  // Recursive function to generate heading selectors
+  @if $high==$low
+    @return 'h#{$high}'
+  @else
+    @return 'h#{$high}, ' headings-selector($high + 1, $low)
+
+@mixin headings($high, $low)
+  // Encapsulates the use of the headings-selector function
+  #{headings-selector($high, $low)}
+    @content
+
+@mixin heading-sizing($base, $h1, $h2, $h3, $h4, $h5, $h6)
+  // Set H1 through H6 font-size to a multiple of $base
+  h1
+    font-size: $base * $h1
+  h2
+    font-size: $base * $h2
+  h3
+    font-size: $base * $h3
+  h4
+    font-size: $base * $h4
+  h5
+    font-size: $base * $h5
+  h6
+    font-size: $base * $h6
+
+@mixin heading-baseline($base, $h1, $h2, $h3, $h4, $h5, $h6)
+  // Set H1 through H6 line-height to a multiple of $base
+  h1
+    line-height: $base * $h1
+  h2
+    line-height: $base * $h2
+  h3
+    line-height: $base * $h3
+  h4
+    line-height: $base * $h4
+  h5
+    line-height: $base * $h5
+  h6
+    line-height: $base * $h6
+
+@mixin body-text-elements
+  p,
+  a,
+  li,
+  dt,
+  dd,
+  th,
+  td,
+  caption,
+  figcaption
+    @content
+
+@mixin word-wrap-hyphens
+  // Wrap words using hyphens
+  word-break: break-word
+  -webkit-hyphens: auto
+  -moz-hyphens: auto
+  hyphens: auto
+
+@mixin text-truncate
+  // Truncate text when it overflows a container using ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  word-wrap: normal

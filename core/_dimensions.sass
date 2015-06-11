@@ -1,0 +1,23 @@
+@mixin unknown-centre
+  // Centre an element without knowing it's width nor the width of the container
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+// @mixin pos($position, $args)
+//   @each $o in top right bottom left
+//     $i: index($args, $o)
+//     @if $i and $i + 1< = length($args) and type-of(nth($args, $i + 1)) == number
+//       #{$o}: nth($args, $i + 1);
+
+//   position: $position
+
+// @mixin pos-absolute($args)
+//   @include position("absolute", $args)
+
+// @mixin pos-fixed($args)
+//   @include position("fixed", $args)
+
+// @mixin pos-relative($args)
+//   @include position("relative", $args)

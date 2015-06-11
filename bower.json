@@ -1,6 +1,6 @@
 {
   "name": "fGrid",
-  "version": "master",
+  "version": "0.5.0",
   "homepage": "http://fgrid.fullaf.com",
   "authors": [
     "Will Pimblett <will@fullaf.com>"
@@ -24,6 +24,6 @@
     "tests"
   ],
   "dependencies": {
-    "bourbon": "~4.0.2"
+    "bourbon": "~4.2.3"
   }
 }
