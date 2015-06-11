@@ -59,6 +59,13 @@
   figcaption
     @content
 
+@mixin word-wrap
+  // Wrap words using hyphens
+  word-break: break-word
+  -webkit-hyphens: auto
+  -moz-hyphens: auto
+  hyphens: auto
+
 @mixin text-truncate
   // Truncate text when it overflows a container using ellipsis
   overflow: hidden
