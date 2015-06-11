@@ -4,7 +4,7 @@ language: sass
 before_install:
 - gem install sass
 - npm install -g bower
-- bower install bourbon#4.0.2
+- bower install bourbon#4.2.2
 notifications:
   email:
   - will+fgrid@fullaf.com
