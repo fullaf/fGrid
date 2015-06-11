@@ -3,9 +3,6 @@
   overflow: auto
   position: relative // Allows relative-abs positioned elements
 
-  // Make changes to the padding animate
-  @include ftransition(padding)
-
   @include respond-up(mob-port)
     padding-left: $grid-mob-port-pad
     padding-right: $grid-mob-port-pad
