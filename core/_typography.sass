@@ -1,9 +1,12 @@
-@mixin block
-  margin-bottom: $grid-baseline
+@mixin block($multiple: 1)
+  margin-bottom: $grid-baseline * $multiple
 
 @mixin baseline($multiple: 1)
   // Set line-height as a multiple of $grid-baseline
   line-height: $grid-baseline * $multiple
+
+@mixin font-size($multiple)
+  font-size: $grid-base-font-size * $multiple
 
 @function headings-selector($high, $low)
   // Recursive function to generate heading selectors
@@ -32,7 +35,7 @@
   h6
     font-size: $base * $h6
 
-@mixin heading-height($base, $h1, $h2, $h3, $h4, $h5, $h6)
+@mixin heading-baseline($base, $h1, $h2, $h3, $h4, $h5, $h6)
   // Set H1 through H6 line-height to a multiple of $base
   h1
     line-height: $base * $h1
@@ -59,7 +62,7 @@
   figcaption
     @content
 
-@mixin word-wrap
+@mixin word-wrap-hyphens
   // Wrap words using hyphens
   word-break: break-word
   -webkit-hyphens: auto
@@ -71,3 +74,4 @@
   overflow: hidden
   text-overflow: ellipsis
   white-space: nowrap
+  word-wrap: normal
