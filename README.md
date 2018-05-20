@@ -1,4 +1,4 @@
-:red_circle: **Depreciated**: This project hasn't been updated since 2015, you probably shouldn't use it.
+:red_circle: **Deprecated**: This project hasn't been updated since 2015, you probably shouldn't use it.
 
 # fGrid · Sass Responsive Grid System
 [![Build Status](https://travis-ci.org/fullaf/fGrid.svg?branch=master)](https://travis-ci.org/fullaf/fGrid)
